@@ -8,14 +8,14 @@ import { MOCK_TODOS } from '../mock-todos';
 @Injectable({ providedIn: 'root' })
 export class TaskLocalStorageRepository implements TaskRepository {
   private tasksSubject: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>([]);
-  private readonly LOCAL_STORAGE_KEY = 'ionic_todo_tasks';
+  private readonly STORAGE_KEY = 'ionic_tasks';
 
   constructor() {
     this.loadTasks();
   }
 
   private loadTasks() {
-    const storedTasks = localStorage.getItem(this.LOCAL_STORAGE_KEY);
+    const storedTasks = localStorage.getItem(this.STORAGE_KEY);
     if (storedTasks) {
       this.tasksSubject.next(JSON.parse(storedTasks));
     } else {
@@ -27,7 +27,7 @@ export class TaskLocalStorageRepository implements TaskRepository {
   }
 
   private saveTasks(tasks: Task[]) {
-    localStorage.setItem(this.LOCAL_STORAGE_KEY, JSON.stringify(tasks));
+    localStorage.setItem(this.STORAGE_KEY, JSON.stringify(tasks));
   }
 
   getTasks(): Observable<Task[]> {
