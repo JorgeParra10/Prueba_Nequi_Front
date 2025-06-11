@@ -1,0 +1,7 @@
+{
+  "name": "nequi-todo-app",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular-standalone"
+}

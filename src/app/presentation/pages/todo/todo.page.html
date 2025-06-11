@@ -1,0 +1,30 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Todo List</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Todo List</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list>
+    <app-task-list
+      [todos]="tasks"
+      (todoCompletionToggled)="toggleTaskCompletion($event)"
+      (todoDeleted)="deleteTask($event)"
+      (todoUpdated)="updateTask($event)"
+    ></app-task-list>
+  </ion-list>
+  <!-- Botón de acción flotante en la parte inferior derecha. -->
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed">
+    <!-- Botón dentro del FAB que llama a la función 'addTodo' al hacer clic. -->
+    <!-- Contiene un icono de "agregar". -->
+    <ion-fab-button (click)="addTask()">
+      <ion-icon name="add"></ion-icon>
+    </ion-fab-button>
+  </ion-fab>
+</ion-content>
